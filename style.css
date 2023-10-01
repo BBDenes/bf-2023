@@ -1,0 +1,52 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.container > input{
+    align-self: center;
+}
+
+.board-container{
+    display: flex;
+    justify-content: center;
+}
+
+.board{
+    outline: 2px solid black;
+    display: flex;
+    flex-basis: 412.8px;
+    align-items: flex-end;
+    justify-content: space-around;
+    flex-shrink: 0;
+    gap:0;
+    flex-wrap: wrap;
+    width: 412.8px;
+    height: 619.8px;
+}
+
+.tile{
+    margin: 0;
+    padding: 0;
+    height: 50px;
+    width: 50px;
+    border: 1px solid black;
+}
+
+.pieces{
+    align-items: flex-start;
+    position: absolute;
+    border: 2px solid red; /*3em height*/
+    z-index: -1;
+}
+
+svg{
+    fill: aqua;
+    z-index: 10;
+}
