@@ -5,5 +5,11 @@ class Piece{
         this.type = type;
         this.x = x;
         this.y = y;
+        this.id = id;
     };
+
+    draw(){
+        const tile = document.querySelector(String(this.id));
+        
+    }
 };

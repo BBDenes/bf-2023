@@ -43,10 +43,9 @@
     align-items: flex-start;
     position: absolute;
     border: 2px solid red; /*3em height*/
-    z-index: -1;
+    z-index: 1;
 }
 
 svg{
     fill: aqua;
-    z-index: 10;
 }
