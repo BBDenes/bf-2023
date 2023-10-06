@@ -1,6 +1,5 @@
 const layout = ['rook', 'knight', 'bishop', 'king', 'queen', 'bishop', 'knight', 'rook']
 
-
 class Piece{
     constructor(team, type, x, y, id){
         this.team = team;
@@ -16,7 +15,8 @@ class Piece{
         let source = `chess_pieces/${this.team}/chess-${this.type}-regular.svg`;
         let newElement = document.createElement("img");
         newElement.src = source;
-        newElement.style.height = "100%";
+        newElement.style.height = "90%";
+        newElement.addEventListener('mousedown', move(this.type))
         tile.append(newElement);
     }
 };
