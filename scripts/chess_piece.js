@@ -11,11 +11,12 @@ class Piece{
     };
 
     draw(){
-        const tile = document.querySelector(String(this.id));
-        let source = `${this.team}/chess-${this.type}-regular.svg`;
+        const tile = document.getElementsByClassName(`${String(this.id)}`)[0];
+        console.log(tile);
+        let source = `chess_pieces/${this.team}/chess-${this.type}-regular.svg`;
         let newElement = document.createElement("img");
         newElement.src = source;
-        newElement.height = "3rem";
+        newElement.style.height = "100%";
         tile.append(newElement);
     }
 };
@@ -23,9 +24,23 @@ class Piece{
 const piece_table = [];
 
 function drawPieces() {
-    piece_table.push(new Array);
-    for (let i = 0; i < 8; i++) {
-        piece_table[0][i] = new Piece('black', layout[i], 0, i, i);
+    for (let i = 0; i < 12; i++) {
+        piece_table.push(new Array);
+        for (let j = 0; j < 8; j++) {
+            if(i == 0) {
+                piece_table[i][j] = new Piece('black', layout[j], j, i, i*8+j);
+                piece_table[i][j].draw();   
+            }else if(i == 1) {
+                piece_table[i][j] = new Piece('black', 'pawn', j, i, i*8+j);
+                piece_table[i][j].draw();
+            }else if(i == 10){
+                piece_table[i][j] = new Piece('white', 'pawn', j, i, i*8+j);
+                piece_table[i][j].draw();
+            }else if(i == 11){
+                piece_table[i][j] = new Piece('white', layout[j], j, i, i*8+j);
+                piece_table[i][j].draw();
+            }
+        }
     }
-    
+    console.log(piece_table);
 }

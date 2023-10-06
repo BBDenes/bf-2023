@@ -44,5 +44,5 @@ function drawBoard(){
         }
         
     }
-    console.log(table);
+    // console.log(table);
 }
