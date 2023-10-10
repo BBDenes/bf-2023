@@ -12,7 +12,7 @@ class Piece{
 
     draw(){
         const tile = document.getElementsByClassName(`${String(this.id)}`)[0];
-        console.log(tile);
+        // console.log(tile);
         let source = `chess_pieces/${this.team}/chess-${this.type}-regular.svg`;
         let newElement = document.createElement("img");
         newElement.src = source;
@@ -43,7 +43,7 @@ function drawPieces() {
             }
         }
     }
-    piece_table[4][3] = new Piece('white','knight', 4, 3, 4*8+3);
-    piece_table[4][3].draw();
+    piece_table[3][3] = new Piece('white','knight', 3, 3, 3*8+3);
+    piece_table[3][3].draw();
     console.log(piece_table);
 }

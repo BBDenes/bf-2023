@@ -25,7 +25,7 @@ const table = [];
 
 function drawBoard(){
     for (let i = 0; i < 12; i++) {
-        table.push(new Array());
+        table.push(new Array(8));
         for (let j = 0; j < 8; j++) {
             let id = i*8+j;
             let color;
@@ -38,7 +38,7 @@ function drawBoard(){
                     color = "black";
                 }
             }
-            table[i].push(new Tile(color, id, j, i));
+            table[i][j] =(new Tile(color, id, j, i));
             table[i][j].draw();
             
         }
