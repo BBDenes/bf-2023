@@ -5,22 +5,22 @@ class Tile{
         this.x = x;
         this.y = y;
     };
-
+    
     draw(){
-        const white = "#ffffff";
-        const black = "#5c5e5d";
         const parent = document.querySelector(".board");
         let newElement = document.createElement("div");
         this.color== "black" ? newElement.style.backgroundColor = black : newElement.style.backgroundColor = white;
-        //newElement.innerHTML = this.id;
+        newElement.innerHTML = this.id;
         newElement.classList.add("tile");
-        newElement.addEventListener('mouseover', ()=>{console.log('asd')})
+        // newElement.addEventListener('mouseover', ()=>{console.log(this.id)})
         newElement.classList.add(this.id);
         parent.append(newElement);
-
+        
     }
 };
 
+const black = "#5c5e5d";
+const white = "#ffffff";
 const table = [];
 
 function drawBoard(){
@@ -45,4 +45,19 @@ function drawBoard(){
         
     }
     // console.log(table);
+}
+
+function clearTable() {
+    for (let i = 0; i < 12; i++) {
+        for (let j = 0; j < 8; j++) {
+            let tile = document.getElementsByClassName(table[i][j].id)[0]
+            if (table[i][j].color == 'black') {
+                tile.style.backgroundColor =  black;
+                
+            } else {
+                tile.style.backgroundColor =  white;
+                
+            }
+        }
+    }
 }

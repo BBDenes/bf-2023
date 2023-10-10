@@ -17,7 +17,7 @@ class Piece{
         let newElement = document.createElement("img");
         newElement.src = source;
         newElement.style.height = "90%";
-        newElement.addEventListener('mousedown', ()=>{move(this)});
+        newElement.addEventListener('mousedown', ()=>{selectTile(this)});
         tile.append(newElement);
     }
 };
@@ -29,19 +29,21 @@ function drawPieces() {
         piece_table.push(new Array);
         for (let j = 0; j < 8; j++) {
             if(i == 0) {
-                piece_table[i][j] = new Piece('black', layout[j], j, i, i*8+j);
+                piece_table[i][j] = new Piece('black', layout[j], i, j, i*8+j);
                 piece_table[i][j].draw();   
             }else if(i == 1) {
-                piece_table[i][j] = new Piece('black', 'pawn', j, i, i*8+j);
+                piece_table[i][j] = new Piece('black', 'pawn', i, j, i*8+j);
                 piece_table[i][j].draw();
             }else if(i == 10){
-                piece_table[i][j] = new Piece('white', 'pawn', j, i, i*8+j);
+                piece_table[i][j] = new Piece('white', 'pawn', i, j, i*8+j);
                 piece_table[i][j].draw();
             }else if(i == 11){
-                piece_table[i][j] = new Piece('white', layout[j], j, i, i*8+j);
+                piece_table[i][j] = new Piece('white', layout[j], i, j, i*8+j);
                 piece_table[i][j].draw();
             }
         }
     }
+    piece_table[4][3] = new Piece('white','knight', 4, 3, 4*8+3);
+    piece_table[4][3].draw();
     console.log(piece_table);
 }
