@@ -10,9 +10,9 @@ class Tile{
         const parent = document.querySelector(".board");
         let newElement = document.createElement("div");
         this.color== "black" ? newElement.style.backgroundColor = black : newElement.style.backgroundColor = white;
-        newElement.innerHTML = this.id;
+        // newElement.innerHTML = this.id;
         newElement.classList.add("tile");
-        // newElement.addEventListener('mouseover', ()=>{console.log(this.id)})
+        newElement.addEventListener('mousedown', ()=>{selectedPiece.moveTo(this)});
         newElement.classList.add(this.id);
         parent.append(newElement);
         
@@ -38,7 +38,7 @@ function drawBoard(){
                     color = "black";
                 }
             }
-            table[i][j] =(new Tile(color, id, j, i));
+            table[i][j] =(new Tile(color, id, i, j));
             table[i][j].draw();
             
         }

@@ -9,7 +9,7 @@
     gap: 1rem;
 }
 
-.container > input{
+.container > input, .container > button{
     align-self: center;
 }
 
@@ -43,8 +43,14 @@
     /* border: 1px solid black; */
 }
 
+h2{
+    font-weight: 200;
+}
 
-/* 
 img{
-    margin: 5px;
-} */
+
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
+    -moz-window-dragging: no-drag;
+}
