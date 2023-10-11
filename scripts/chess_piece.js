@@ -16,6 +16,7 @@ class Piece{
         let source = `chess_pieces/${this.team}/chess-${this.type}-regular.svg`;
         let newElement = document.createElement("img");
         newElement.src = source;
+        newElement.innerText = `${this.x}, ${this.y}`
         newElement.style.height = "90%";
         newElement.addEventListener('mousedown', ()=>{selectTile(this)});
         tile.append(newElement);
@@ -26,7 +27,7 @@ const piece_table = [];
 
 function drawPieces() {
     for (let i = 0; i < 12; i++) {
-        piece_table.push(new Array);
+        piece_table.push(new Array(8));
         for (let j = 0; j < 8; j++) {
             if(i == 0) {
                 piece_table[i][j] = new Piece('black', layout[j], i, j, i*8+j);
@@ -47,3 +48,4 @@ function drawPieces() {
     piece_table[3][3].draw();
     console.log(piece_table);
 }
+

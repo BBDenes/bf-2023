@@ -1,5 +1,7 @@
 let canMove = false;
-
+let selectedTiles = [];
+//i = sor, j = oszlop
+//x = sor, y = oszlop
 
 function move(piece){
     const {team, type, x, y, id} = piece;
@@ -8,14 +10,11 @@ function move(piece){
 
 function selectTile(piece){
     clearTable();
-    let selectedTiles = [];
-    let temp = [];
-    let maxRadius = 0
+    selectedTiles = [];
     // console.log([piece.x, piece.y])
     document.getElementsByClassName(posToId(piece.x, piece.y))[0].style.backgroundColor = 'orange';
     switch (piece.type){
         case "knight":
-            maxRadius = 2;
             selectedTiles.push(posToId(piece.x-2, piece.y-1));
 
             selectedTiles.push(posToId(piece.x-1, piece.y-2));
@@ -33,18 +32,18 @@ function selectTile(piece){
             selectedTiles.push(posToId(piece.x-2, piece.y+1));    
         break;
         case 'pawn':
-            maxRadius = 2;
             if (piece.team == 'black') {
-                selectedTiles = select(piece, 2, 'down');
+                select(piece, 2, 'down');
             } else {
-                selectedTiles = select(piece, 2, 'up');
+                select(piece, 2, 'up');
             }
         break;
         default:
             break;
-    }
+        }
+    console.log(selectedTiles)
     selectedTiles = selectedTiles.filter(id =>{
-        if(id <= 95 && id >= 0 && Math.abs(idToPos(id)[0] - piece.x) <= maxRadius && Math.abs(idToPos(id)[1] - piece.y) <= maxRadius){
+        if(id <= 95 && id >= 0){
             if(document.getElementsByClassName(id)[0].childElementCount == 0){
                 return true;
             }else{
@@ -60,7 +59,6 @@ function selectTile(piece){
             return false
         }
     });
-    console.log(selectedTiles)
 
     for (const i in selectedTiles) {
         let tile = document.getElementsByClassName(String(selectedTiles[i]))[0];
@@ -69,7 +67,10 @@ function selectTile(piece){
 
 }
 
-function posToId(i, j) {
+function posToId(i, j) { //i=x, j=y
+    if (i > 11 || j > 7 || i < 0 || j < 0) {
+        return Infinity;
+    }
     return i*8+j;
 }
 
@@ -79,11 +80,15 @@ function idToPos(id){
 
 function select(piece, amount, where) {
     dir = where.split(',');
-    if (dir.includes('up')) {
-        for (let i = piece.y; i > amount; i--) {
-            if (document.getElementsByClassName(posToId(piece.x, i)[0].fir)) {
-                
+    if (dir.includes('up')){
+        
+        for (let i = piece.x-1; i > piece.x-amount-1; i--) {
+            console.log(i)
+            if (piece_table[piece.x][i] != undefined && piece_table[piece.x][i].team == piece.team) {
+                break;
             }
+            console.log([i, piece.y]);
+            selectedTiles.push(posToId(i, piece.y));
         }
     }
 }
